@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OOP.Ornekler;
 
 namespace OOP.Controllers
 {
@@ -57,7 +58,7 @@ namespace OOP.Controllers
             ViewBag.v = p;
         }
 
-        void Username(string username)
+        private void Username(string username)
         {
             ViewBag.user = username;
         }
@@ -72,7 +73,7 @@ namespace OOP.Controllers
         {
             int sayı = 1;
 
-            for (int i = 1; i <=p; i++)
+            for (int i = 1; i <= p; i++)
             {
                 sayı = sayı * i;
             }
@@ -91,8 +92,6 @@ namespace OOP.Controllers
 
             ViewBag.toplamsonuc = Toplama(20, 30);
 
-
-
             return View();
         }
 
@@ -110,6 +109,23 @@ namespace OOP.Controllers
         public IActionResult Musteriler()
         {
             ViewBag.sonuc4 = cumle();
+            return View();
+        }
+
+        public IActionResult Deneme()
+        {
+            Sehirler sehirler = new Sehirler();
+
+            sehirler.Ad = "Istanbul";
+            sehirler.ID = 1;
+            sehirler.Nufus = 1000;
+            sehirler.Ulke = "Türkiye";
+
+            ViewBag.Input1 = sehirler.Ad;
+            ViewBag.Input2 = sehirler.ID;
+            ViewBag.Input3 = sehirler.Nufus;
+            ViewBag.Input4 = sehirler.Ulke;
+
             return View();
         }
     }

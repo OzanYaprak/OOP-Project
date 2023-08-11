@@ -3,9 +3,12 @@
     Layout = null;
 }
 
-<h1>Şehir Paneli</h1>
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-<table>
+
+<h1 class="h3">Şehir Paneli</h1>
+
+<table class="table table-bordered">
     <tr>
         <th>#</th>
         <th>Ülke</th>
@@ -19,3 +22,5 @@
         <td>@ViewBag.Input3</td>
     </tr>
 </table>
+
+<a asp-controller="Default" asp-action="Urunler" class="btn btn-dark">Ürünler</a>

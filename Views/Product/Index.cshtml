@@ -1,0 +1,33 @@
+﻿@using OOP.Entity;
+
+@model List<Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CoreLayout.cshtml";
+}
+
+<h3 class="text-center">Ürün Sayfası</h3>
+
+<table class="table table-bordered">
+    <tr>
+        <th class="text-center">#</th>
+        <th class="text-center">Ürün Adı</th>
+        <th class="text-center">Fiyatı</th>
+        <th class="text-center">Stok</th>
+        <th class="text-center">Sil</th>
+        <th class="text-center">Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductID</td>
+            <td>@item.ProductName</td>
+            <td>@item.ProductPrice</td>
+            <td>@item.ProductStock</td>
+            <td class="text-center"><a class="btn btn-danger" asp-controller="Product" asp-action="DeleteProduct" asp-route-id="@item.ProductID">Sil</a></td>
+            <td class="text-center"><a class="btn btn-success" asp-controller="Product" asp-action="UpdateProduct" asp-route-id="@item.ProductID">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a asp-controller="Product" asp-action="AddProduct" class="btn btn-primary">Yeni Ürün Girişi</a>

@@ -25,10 +25,19 @@ namespace OOP.Controllers
         [HttpPost]
         public IActionResult AddCustomer(Customer customer)
         {
-            dbContext.Customers.Add(customer);
-            dbContext.SaveChanges();
+            if (customer.CustomerName.Length >= 3 && customer.CustomerCity != "")
+            {
+                dbContext.Customers.Add(customer);
+                dbContext.SaveChanges();
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "Yanlış yada eksik giriş yaptınız";
+                return View();
+            }
+
         }
 
         [HttpGet]

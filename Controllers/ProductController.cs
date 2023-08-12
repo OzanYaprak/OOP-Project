@@ -7,11 +7,11 @@ namespace OOP.Controllers
 {
     public class ProductController : Controller
     {
-        private DBContext dBContext = new DBContext();
+        private DBContext dbContext = new DBContext();
 
         public IActionResult Index()
         {
-            var values = dBContext.Products.ToList();
+            var values = dbContext.Products.ToList();
 
             return View(values);
         }
@@ -25,8 +25,8 @@ namespace OOP.Controllers
         [HttpPost]
         public IActionResult AddProduct(Product product)
         {
-            dBContext.Products.Add(product);
-            dBContext.SaveChanges();
+            dbContext.Products.Add(product);
+            dbContext.SaveChanges();
 
             return RedirectToAction("Index");
         }
@@ -34,10 +34,10 @@ namespace OOP.Controllers
         [HttpGet]
         public IActionResult DeleteProduct(int id)
         {
-            var product = dBContext.Products.FirstOrDefault(x => x.ProductID == id);
+            var product = dbContext.Products.FirstOrDefault(x => x.ProductID == id);
 
-            dBContext.Remove(product);
-            dBContext.SaveChanges();
+            dbContext.Remove(product);
+            dbContext.SaveChanges();
             
             return RedirectToAction("Index");
         }
@@ -45,7 +45,7 @@ namespace OOP.Controllers
         [HttpGet]
         public IActionResult UpdateProduct(int id) 
         {
-            var value = dBContext.Products.FirstOrDefault(x => x.ProductID == id);
+            var value = dbContext.Products.FirstOrDefault(x => x.ProductID == id);
 
             return View(value);
         }
@@ -53,14 +53,14 @@ namespace OOP.Controllers
         [HttpPost]
         public IActionResult UpdateProduct(Product product)
         {
-            var value = dBContext.Products.FirstOrDefault(x => x.ProductID == product.ProductID);
+            var value = dbContext.Products.FirstOrDefault(x => x.ProductID == product.ProductID);
 
             value.ProductName = product.ProductName;
             value.ProductPrice = product.ProductPrice;
             value.ProductStock = product.ProductStock;
 
-            dBContext.Products.Update(value);
-            dBContext.SaveChanges();
+            dbContext.Products.Update(value);
+            dbContext.SaveChanges();
 
             return RedirectToAction("Index");
         }

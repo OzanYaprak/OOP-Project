@@ -1,0 +1,30 @@
+﻿@using OOP.Entity;
+
+@model Customer
+
+@{
+    ViewData["Title"] = "AddCustomer";
+    Layout = "~/Views/Shared/_CoreLayout.cshtml";
+}
+
+<h1>Yeni Müşteri Kaydı</h1>
+
+@* <form asp-controller="Customer" asp-action="AddCustomer" method="post">
+    <label>Müşteri Adı</label>
+    <input class="form-control" type="text" placeholder="Müşteri İsmini giriniz.." />
+    <br />
+    <label>Şehir</label>
+    <input class="form-control" type="text" placeholder="Şehir bilgisi giriniz.." />
+    <br />
+    <button type="submit" class="btn btn-dark">Ekle</button>
+</form> *@
+
+<form method="post">
+    @Html.Label("Müşteri Adı")
+    @Html.TextBoxFor(x=>x.CustomerName, new { @class="form-control" })
+    <br />
+    @Html.Label("Şehir")
+    @Html.TextBoxFor(x=>x.CustomerCity, new { @class="form-control" })
+    <br />
+    <button class="btn btn-dark">Ekle</button>
+</form>
